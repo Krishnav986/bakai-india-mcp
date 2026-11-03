@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "bakai-india-mcp": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\Krishnav\\.gemini\\antigravity\\scratch\\bakai-india-mcp\\server.py",
+        "--transport",
+        "stdio"
+      ],
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}
