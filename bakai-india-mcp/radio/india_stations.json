@@ -1,0 +1,333 @@
+[
+  {
+    "id": "air_vividh_bharati",
+    "name": "All India Radio Vividh Bharati",
+    "aliases": ["vividh bharati", "vividh bharti", "akashvani vividh bharati", "air vividh", "विविध भारती"],
+    "language": "hindi",
+    "region": "National",
+    "city": "Mumbai / New Delhi",
+    "category": "all_india_radio",
+    "stream_url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8",
+    "fallback_urls": [
+      "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio001/hlspbaudio001_Auto.m3u8",
+      "https://d3hrxqn1tritdh.cloudfront.net/146ed6ec6dea5a24/146ed6ec6dea5a24.m3u8"
+    ],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "India's premier commercial broadcasting service featuring Hindi film songs, golden oldies, and radio dramas."
+  },
+  {
+    "id": "air_delhi_fm_gold",
+    "name": "AIR Delhi FM Gold (106.4 MHz)",
+    "aliases": ["fm gold", "air fm gold", "delhi fm gold", "एफएम गोल्ड"],
+    "language": "hindi",
+    "region": "North India",
+    "city": "Delhi",
+    "category": "all_india_radio",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio005/hlspbaudio005_Auto.m3u8",
+    "fallback_urls": [
+      "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio005/hlspbaudio00564kbps.m3u8"
+    ],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "FM Gold Delhi featuring classic Hindi melodies, news hourly updates, and cultural programs."
+  },
+  {
+    "id": "air_delhi_fm_rainbow",
+    "name": "AIR Delhi FM Rainbow (102.6 MHz)",
+    "aliases": ["fm rainbow", "air fm rainbow", "delhi fm rainbow", "एफएम रेनबो"],
+    "language": "hindi",
+    "region": "North India",
+    "city": "Delhi",
+    "category": "all_india_radio",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio004/hlspbaudio004_Auto.m3u8",
+    "fallback_urls": [
+      "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio004/hlspbaudio00464kbps.m3u8"
+    ],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "Urban contemporary Hindi and English popular music, youth shows, and entertainment."
+  },
+  {
+    "id": "air_indraprastha",
+    "name": "AIR Indraprastha Channel (Delhi MW)",
+    "aliases": ["air indraprastha", "indraprastha channel", "akashvani delhi a"],
+    "language": "hindi",
+    "region": "North India",
+    "city": "Delhi",
+    "category": "all_india_radio",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio002/hlspbaudio002_Auto.m3u8",
+    "fallback_urls": [],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "Akashvani Delhi regional service broadcasting classical music, talks, and news."
+  },
+  {
+    "id": "air_assam_nagaon",
+    "name": "All India Radio Nagaon (Assam)",
+    "aliases": ["air nagaon", "akashvani nagaon", "assam radio", "assamese radio", "অসমীয়া ৰেডিঅ"],
+    "language": "assamese",
+    "region": "Assam & Northeast",
+    "city": "Nagaon / Guwahati",
+    "category": "all_india_radio",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio002/hlspbaudio002_Auto.m3u8",
+    "fallback_urls": [
+      "https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8"
+    ],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / AIR Guwahati & Nagaon",
+    "description": "Regional broadcasting service serving Assam with Assamese cultural programs, Bihu songs, and regional news."
+  },
+  {
+    "id": "air_kolkata_maitree",
+    "name": "AIR Akashvani Maitree Kolkata",
+    "aliases": ["air maitree", "akashvani maitree", "air kolkata maitree", "bengali radio", "বাংলা রেডিও"],
+    "language": "bengali",
+    "region": "West Bengal",
+    "city": "Kolkata",
+    "category": "all_india_radio",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio245/hlspbaudio24564kbps.m3u8",
+    "fallback_urls": [
+      "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio057/hlspbaudio05764kbps.m3u8"
+    ],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "Special Bengali service connecting Bengali diaspora with Rabindra Sangeet, Bengali dramas, and literature."
+  },
+  {
+    "id": "air_kolkata_geetanjali",
+    "name": "AIR Kolkata Geetanjali (A Channel)",
+    "aliases": ["air geetanjali", "kolkata geetanjali", "akashvani kolkata"],
+    "language": "bengali",
+    "region": "West Bengal",
+    "city": "Kolkata",
+    "category": "all_india_radio",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio055/hlspbaudio05564kbps.m3u8",
+    "fallback_urls": [],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "Akashvani Kolkata primary service featuring Bengali classical music, discussion, and regional news."
+  },
+  {
+    "id": "air_bangalore_rainbow",
+    "name": "AIR Bengaluru FM Rainbow (101.3 MHz)",
+    "aliases": ["air bangalore", "air bengaluru", "bengaluru fm rainbow", "kannada radio", "ಕನ್ನಡ ರೇಡಿಯೋ"],
+    "language": "kannada",
+    "region": "Karnataka",
+    "city": "Bengaluru",
+    "category": "all_india_radio",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio030/hlspbaudio030_Auto.m3u8",
+    "fallback_urls": [
+      "https://air.pc.cdn.bitgravity.com/air/live/pbaudio031/playlist.m3u8"
+    ],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "Popular Kannada songs, Sandalwood cinema updates, and local Bengaluru programming."
+  },
+  {
+    "id": "air_mumbai_rainbow",
+    "name": "AIR Mumbai FM Rainbow (107.1 MHz)",
+    "aliases": ["air mumbai", "mumbai fm rainbow", "mumbai rainbow", "marathi radio", "मराठी रेडिओ"],
+    "language": "marathi",
+    "region": "Maharashtra",
+    "city": "Mumbai",
+    "category": "all_india_radio",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio008/hlspbaudio008_Auto.m3u8",
+    "fallback_urls": [],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "Marathi and Hindi entertainment, Natyasangeet, Bollywood music and Mumbai infotainment."
+  },
+  {
+    "id": "air_hyderabad_a",
+    "name": "AIR Hyderabad A (Telugu)",
+    "aliases": ["air hyderabad", "akashvani hyderabad", "telugu radio", "తెలుగు రేడియో"],
+    "language": "telugu",
+    "region": "Telangana & Andhra Pradesh",
+    "city": "Hyderabad",
+    "category": "all_india_radio",
+    "stream_url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio032/playlist.m3u8",
+    "fallback_urls": [],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "Telugu cultural programming, Carnatic classical music, and Andhra-Telangana regional news."
+  },
+  {
+    "id": "air_chennai_rainbow",
+    "name": "AIR Chennai FM Rainbow (101.4 MHz)",
+    "aliases": ["air chennai", "chennai rainbow", "tamil radio", "தமிழ் வானொலி", "akashvani chennai"],
+    "language": "tamil",
+    "region": "Tamil Nadu",
+    "city": "Chennai",
+    "category": "all_india_radio",
+    "stream_url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio022/chunklist.m3u8",
+    "fallback_urls": [
+      "https://air.pc.cdn.bitgravity.com/air/live/pbaudio021/chunklist.m3u8"
+    ],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "Tamil cinema songs, Kollywood news, Carnatic vocals, and local Chennai updates."
+  },
+  {
+    "id": "air_kochi_rainbow",
+    "name": "AIR Kochi FM Rainbow (101.9 MHz)",
+    "aliases": ["air kochi", "air cochin", "malayalam radio", "മലയാളം റേഡിയോ", "kochi rainbow"],
+    "language": "malayalam",
+    "region": "Kerala",
+    "city": "Kochi",
+    "category": "all_india_radio",
+    "stream_url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio044/playlist.m3u8",
+    "fallback_urls": [
+      "https://air.pc.cdn.bitgravity.com/air/live/pbaudio045/chunklist.m3u8"
+    ],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "Malayalam entertainment, film tracks, Kerala traditional music, and coastal news."
+  },
+  {
+    "id": "air_raagam_classical",
+    "name": "AIR Raagam (24x7 Classical Music)",
+    "aliases": ["air raagam", "raagam", "classical radio", "carnatic radio", "hindustani classical", "रागम्"],
+    "language": "sanskrit",
+    "region": "National",
+    "city": "Bengaluru / Delhi",
+    "category": "classical",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio006/hlspbaudio006_Auto.m3u8",
+    "fallback_urls": [
+      "https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8"
+    ],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio",
+    "description": "Dedicated 24-hour channel for Indian Classical Music (Hindustani and Carnatic traditions)."
+  },
+  {
+    "id": "fnf_fm_hindi",
+    "name": "Fnf.Fm Hindi Bollywood",
+    "aliases": ["fnf fm", "fnf hindi", "hindi bollywood radio", "bollywood hits"],
+    "language": "hindi",
+    "region": "National",
+    "city": "Mumbai",
+    "category": "bollywood",
+    "stream_url": "http://192.99.8.192:5032/;stream",
+    "fallback_urls": [
+      "http://stream.zeno.fm/8ty8szwpwfeuv"
+    ],
+    "format": "mp3",
+    "playable": true,
+    "official_source": "Fnf Radio Network",
+    "description": "Continuous high-quality Bollywood hits, dance numbers, and romantic tracks."
+  },
+  {
+    "id": "hits_of_bollywood",
+    "name": "Hits Of Bollywood Radio",
+    "aliases": ["hits of bollywood", "bollywood radio", "hindi hits"],
+    "language": "hindi",
+    "region": "National",
+    "city": "Mumbai",
+    "category": "bollywood",
+    "stream_url": "http://stream.zeno.fm/8ty8szwpwfeuv",
+    "fallback_urls": [
+      "https://stream.zeno.fm/6n6ewddtad0uv"
+    ],
+    "format": "mp3",
+    "playable": true,
+    "official_source": "Zeno FM Stream Network",
+    "description": "Top chart-topping contemporary Hindi songs and film soundtracks."
+  },
+  {
+    "id": "bollywood_gaane_purane",
+    "name": "Bollywood Gaane Purane (Retro Classics)",
+    "aliases": ["gaane purane", "retro bollywood", "old hindi songs", "kishore rafi lata", "पुराने गाने"],
+    "language": "hindi",
+    "region": "National",
+    "city": "Mumbai",
+    "category": "bollywood",
+    "stream_url": "https://stream.zeno.fm/6n6ewddtad0uv",
+    "fallback_urls": [
+      "https://stream.zeno.fm/n2fd0edh9k8uv"
+    ],
+    "format": "mp3",
+    "playable": true,
+    "official_source": "Zeno FM Stream Network",
+    "description": "Golden era Hindi music from the 1950s, 60s, 70s, and 80s featuring Kishore Kumar, Mohd Rafi, Lata Mangeshkar, and Asha Bhosle."
+  },
+  {
+    "id": "tamil_80s_hits",
+    "name": "80s Tamil Hits Radio",
+    "aliases": ["80s tamil", "tamil hits", "ilayaraja hits", "spb tamil"],
+    "language": "tamil",
+    "region": "Tamil Nadu",
+    "city": "Chennai",
+    "category": "regional",
+    "stream_url": "https://stream.zeno.fm/48w230kx8vzuv.aac",
+    "fallback_urls": [
+      "https://stream.zeno.fm/tqnws2eafwzuv.aac"
+    ],
+    "format": "aac",
+    "playable": true,
+    "official_source": "Zeno Media South",
+    "description": "Classic 1980s Tamil cinema songs featuring legendary maestro Ilaiyaraaja and SPB."
+  },
+  {
+    "id": "punjabi_desi_world",
+    "name": "Punjabi Virsa & Bhangra Radio",
+    "aliases": ["punjabi radio", "punjabi virsa", "bhangra radio", "ਪੰਜਾਬੀ ਰੇਡੀਓ"],
+    "language": "punjabi",
+    "region": "Punjab",
+    "city": "Amritsar / Jalandhar",
+    "category": "regional",
+    "stream_url": "http://stream.zeno.fm/btrks671ynhvv",
+    "fallback_urls": [],
+    "format": "mp3",
+    "playable": true,
+    "official_source": "Desi Stream Network",
+    "description": "Folk Punjabi songs, Bhangra beats, Sufi tracks, and modern Punjabi pop."
+  },
+  {
+    "id": "radio_schizoid_india",
+    "name": "Radio Schizoid India - Chillout Ambient",
+    "aliases": ["radio schizoid", "chillout radio", "ambient radio india"],
+    "language": "english",
+    "region": "National",
+    "city": "Goa / Mumbai",
+    "category": "community",
+    "stream_url": "http://94.130.113.214:8000/chill",
+    "fallback_urls": [
+      "http://94.130.113.214:8000/dubtechno"
+    ],
+    "format": "mp3",
+    "playable": true,
+    "official_source": "Schizoid Radio Independent",
+    "description": "Atmospheric downtempo, chillout lounge, and ambient electronic audio curated in India."
+  },
+  {
+    "id": "air_shillong_northeast",
+    "name": "AIR Shillong (Northeast Service)",
+    "aliases": ["air shillong", "shillong radio", "meghalaya radio", "northeast radio"],
+    "language": "english",
+    "region": "Assam & Northeast",
+    "city": "Shillong",
+    "category": "all_india_radio",
+    "stream_url": "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio007/hlspbaudio007_Auto.m3u8",
+    "fallback_urls": [
+      "https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio002/hlspbaudio002_Auto.m3u8"
+    ],
+    "format": "hls",
+    "playable": true,
+    "official_source": "Prasar Bharati / All India Radio Shillong",
+    "description": "Northeast regional broadcasting service in English, Khasi, and Garo."
+  }
+]

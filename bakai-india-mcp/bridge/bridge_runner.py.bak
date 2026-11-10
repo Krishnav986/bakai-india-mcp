@@ -1,0 +1,263 @@
+
+"""Standalone Python WebSocket Bridge for Xiaozhi MCP Ecosystem.
+
+Connects BAKAI tools to Xiaozhi and starts the authenticated phone gateway.
+"""
+
+from __future__ import annotations
+
+import asyncio
+import inspect
+import json
+import sys
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+# Add project root to sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from core.config import settings
+from core.logging import logger
+from server import mcp
+
+_TOOL_MAP = {
+    name: getattr(tool, "fn", None)
+    for name, tool in getattr(mcp._tool_manager, "_tools", {}).items()
+}
+
+
+class XiaozhiWebSocketBridge:
+    """Manages connection to Xiaozhi and dispatches MCP tools."""
+
+    def __init__(self, ws_url: str, token: Optional[str] = None) -> None:
+        self.ws_url = ws_url
+        self.token = token or settings.XIAOZHI_TOKEN
+        self.device_id = settings.XIAOZHI_DEVICE_ID or "bakai_robot_01"
+        self._running = False
+
+    def build_tool_manifest(self) -> List[Dict[str, Any]]:
+        manifest = []
+        tools_dict = getattr(mcp._tool_manager, "_tools", {})
+
+        for name, tool in tools_dict.items():
+            doc = (
+                getattr(tool, "description", None)
+                or getattr(tool.fn, "__doc__", "")
+                or ""
+            ).strip()
+
+            manifest.append({
+                "name": name,
+                "description": doc,
+                "parameters": getattr(
+                    tool,
+                    "parameters",
+                    {"type": "object", "properties": {}},
+                ),
+            })
+
+        return manifest
+
+    async def execute_tool(
+        self,
+        tool_name: str,
+        arguments: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        fn = _TOOL_MAP.get(tool_name)
+
+        if not fn:
+            return {
+                "status": "error",
+                "error": f"Tool '{tool_name}' not found.",
+            }
+
+        try:
+            logger.info(f"Executing tool: {tool_name}")
+
+            if inspect.iscoroutinefunction(fn):
+                result = await fn(**arguments)
+            else:
+                result = fn(**arguments)
+
+            return result
+
+        except Exception as exc:
+            logger.error(
+                f"Error executing tool '{tool_name}': {exc}",
+                exc_info=True,
+            )
+            return {
+                "status": "error",
+                "tool": tool_name,
+                "error": str(exc),
+            }
+
+    async def handle_message(self, ws, message_text: str) -> None:
+        try:
+            msg = json.loads(message_text)
+        except Exception as exc:
+            logger.warning(f"Invalid JSON received: {exc}")
+            return
+
+        msg_id = msg.get("id")
+        method = msg.get("method")
+        params = msg.get("params", {})
+
+        if method == "tools/list":
+            response = {
+                "jsonrpc": "2.0",
+                "id": msg_id,
+                "result": {
+                    "tools": self.build_tool_manifest(),
+                },
+            }
+            await ws.send(json.dumps(response))
+
+        elif method == "tools/call":
+            tool_name = params.get("name")
+            arguments = params.get("arguments", {})
+
+            result = await self.execute_tool(tool_name, arguments)
+
+            response = {
+                "jsonrpc": "2.0",
+                "id": msg_id,
+                "result": {
+                    "content": [{
+                        "type": "text",
+                        "text": json.dumps(result, ensure_ascii=False),
+                    }],
+                    "isError": result.get("status") == "error",
+                },
+            }
+
+            await ws.send(json.dumps(response))
+
+        elif method == "ping":
+            await ws.send(json.dumps({
+                "jsonrpc": "2.0",
+                "id": msg_id,
+                "result": "pong",
+            }))
+
+    async def start(self) -> None:
+        self._running = True
+        reconnect_delay = 3
+
+        headers = {
+            "X-Device-Id": self.device_id,
+            "User-Agent": settings.USER_AGENT,
+        }
+
+        from urllib.parse import quote
+        connect_url = (
+            f"{self.ws_url}?token={quote(self.token, safe='')}"
+            if self.token else self.ws_url
+        )
+
+        try:
+            import websockets
+        except ImportError:
+            logger.error("Install the websockets package first.")
+            return
+
+        logger.info(
+            f"Connecting to Xiaozhi: {self.ws_url}"
+        )
+
+        while self._running:
+            try:
+                async with websockets.connect(
+                    connect_url,
+                    additional_headers=headers,
+                ) as ws:
+
+                    logger.info("Connected to Xiaozhi.")
+                    reconnect_delay = 3
+
+                    handshake = {
+                        "jsonrpc": "2.0",
+                        "method": "handshake",
+                        "params": {
+                            "device_id": self.device_id,
+                            "server_name": settings.SERVER_NAME,
+                            "server_version": settings.SERVER_VERSION,
+                            "tools_count": len(_TOOL_MAP),
+                        },
+                    }
+
+                    await ws.send(json.dumps(handshake))
+
+                    async for message in ws:
+                        await self.handle_message(ws, message)
+
+            except asyncio.CancelledError:
+                raise
+
+            except Exception as exc:
+                logger.warning(
+                    f"Xiaozhi disconnected: {exc}. "
+                    f"Retrying in {reconnect_delay} seconds."
+                )
+                await asyncio.sleep(reconnect_delay)
+                reconnect_delay = min(30, reconnect_delay * 1.5)
+
+    def stop(self) -> None:
+        self._running = False
+
+
+async def run_services(bridge):
+    import uvicorn
+    from bridge.phone_gateway import app
+
+    bridge_task = asyncio.create_task(bridge.start())
+
+    gateway_config = uvicorn.Config(
+        app,
+        host=settings.PHONE_GATEWAY_HOST,
+        port=settings.PHONE_GATEWAY_PORT,
+        log_level="warning",
+        access_log=False,
+    )
+
+    gateway_server = uvicorn.Server(gateway_config)
+    gateway_task = asyncio.create_task(gateway_server.serve())
+
+    logger.info(
+        f"BAKAI phone gateway starting on port "
+        f"{settings.PHONE_GATEWAY_PORT}"
+    )
+
+    try:
+        await asyncio.gather(bridge_task, gateway_task)
+
+    finally:
+        bridge.stop()
+        gateway_server.should_exit = True
+
+        for task in (bridge_task, gateway_task):
+            task.cancel()
+
+        await asyncio.gather(
+            bridge_task,
+            gateway_task,
+            return_exceptions=True,
+        )
+
+
+if __name__ == "__main__":
+    url = (
+        sys.argv[1]
+        if len(sys.argv) > 1
+        else settings.XIAOZHI_WS_ENDPOINT
+    )
+
+    if not url:
+        raise SystemExit("XIAOZHI_WS_ENDPOINT is missing from configuration.")
+
+    bridge = XiaozhiWebSocketBridge(ws_url=url)
+
+    try:
+        asyncio.run(run_services(bridge))
+    except KeyboardInterrupt:
+        logger.info("BAKAI services stopped by user.")
